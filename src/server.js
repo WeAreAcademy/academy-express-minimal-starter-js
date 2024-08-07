@@ -4,10 +4,16 @@ import morgan from "morgan";
 
 const app = express();
 
-const customers = ["Bukola", "Caspar", "Dana", "Olu", "Paul"];
+const customersloyalty = [
+    { name: "Bukola", stamps: 2 },
+    { name: "Caspar", stamps: 2 },
+    { name: "Dana", stamps: 2 },
+    { name: "Olu", stamps: 2 },
+    { name: "Paul", stamps: 2 },
+];
 
 app.get("/customers", function (_req, res) {
-    res.json(customers);
+    res.json(customersloyalty);
 });
 
 //allow morgan logger to get access to each request before and after our handlers
