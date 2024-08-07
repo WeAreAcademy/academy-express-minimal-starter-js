@@ -32,6 +32,21 @@ app.get("/customerLoyalty", function (_req, res) {
     res.json(customersloyalty);
 });
 
+app.post("/customerLoyalty", (req, res) => {
+    const newCustomer = { name: req.body, stamps: 0 };
+    if (!newCustomer) {
+        console.error("No new customer name received in POST/");
+        res.status(400).json({
+            error: "missing customer name from request body",
+        });
+        return;
+    }
+    console.log({ newCustomer });
+    customersloyalty.push(newCustomer);
+
+    res.json({ outcome: "success", message: newCustomer });
+});
+
 app.listen(PORT, () => {
     console.log(
         `Your express app started listening on ${PORT}, at ${new Date()}`
