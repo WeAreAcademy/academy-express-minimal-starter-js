@@ -4,6 +4,12 @@ import morgan from "morgan";
 
 const app = express();
 
+const customers = ["Bukola", "Caspar", "Dana", "Olu", "Paul"];
+
+app.get("/customers", function (_req, res) {
+    res.json(customers);
+});
+
 //allow morgan logger to get access to each request before and after our handlers
 app.use(morgan("dev"));
 //auto-include CORS headers to allow consumption of our content by in-browser js loaded from elsewhere
